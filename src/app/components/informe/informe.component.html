@@ -1,0 +1,20 @@
+<div class="container-fluid w-100 vh-100 bg-success d-flex justify-content-center align-items-center">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="https://www.ev-eventos.com/wp-content/uploads/2017/08/mobiliario-salon.jpg" class="card-img-top"
+            alt="image">
+        <div class="card-body">
+            <h5 class="card-title font-crafty h3">Cantidad de eventos</h5>
+            <hr>
+            <p class="card-text">
+                A la fecha de hoy {{ fecha | date:'dd/MM/yyyy' }}, Eventos Flores tiene agendado <strong>{{
+                    cantidadEventos }}</strong> eventos en su calendario.
+            </p>
+        </div>
+        <div class="card-body">
+            <button class="btn btn-sm btn-success w-100" routerLink="/">
+                <i class="bi bi-arrow-left"></i>
+                Regresar
+            </button>
+        </div>
+    </div>
+</div>

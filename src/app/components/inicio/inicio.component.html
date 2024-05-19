@@ -1,0 +1,89 @@
+<div class="bg-success w-100 vh-100 p-3 d-flex flex-column">
+    <span class="font-crafty text-white w-75 mx-auto fs-1 text-start">
+        <i class="bi bi-flower3"></i> Eventos Flores
+    </span>
+    <div class="container-fluid bg-light w-75 h-100 rounded-4 shadow">
+        <form [formGroup]="formulario" (ngSubmit)="registrar()" class="py-4">
+            <div class="row row-cols-3 px-3">
+                <div class="input-group-sm">
+                    <label class="form-label">Tipo</label>
+                    <select class="form-control focus-ring focus-ring-success border border-success"
+                        formControlName="tipo">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        @for (item of tipos; track $index) {
+                        <option [value]="item._id">{{item.nombre}}</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group-sm">
+                    <label class="form-label">Precio</label>
+                    <input type="number" class="form-control focus-ring focus-ring-success border border-success"
+                        formControlName="precio">
+                </div>
+                <div class="input-group-sm">
+                    <label class="form-label">Restricción</label>
+                    <div class="form-control focus-ring focus-ring-success border border-success p-0">
+                        <div class="form-check form-switch m-0 d-flex align-items-center justify-content-evenly">
+                            <input class="form-check-input" type="checkbox" formControlName="restriccionEdad">
+                            <label class="form-check-label">Mayores de edad</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-3 px-3">
+                <div class="input-group-sm">
+                    <label class="form-label">Fecha</label>
+                    <input type="date" class="form-control focus-ring focus-ring-success border border-success"
+                        formControlName="fecha">
+                </div>
+                <div class="input-group-sm">
+                    <label class="form-label">Capacidad</label>
+                    <input type="number" class="form-control focus-ring focus-ring-success border border-success"
+                        formControlName="capacidad">
+                </div>
+                <div class="input-group-sm">
+                    <label class="form-label">Descripción</label>
+                    <input type="text" class="form-control focus-ring focus-ring-success border border-success"
+                        formControlName="descripcion">
+                </div>
+            </div>
+            <div class="mt-2 text-end px-3">
+                <button type="button" class="btn btn-sm btn-success w-25 me-3" (click)="cantidadEventos()">
+                    <i class="bi bi-calendar2-check-fill pe-2"></i>
+                    <span>Cantidad eventos</span>
+                </button>
+                <button type="submit" class="btn btn-sm btn-success w-25">
+                    <i class="bi bi-patch-plus-fill pe-2"></i>
+                    <span>Crear Evento</span>
+                </button>
+            </div>
+        </form>
+        <hr>
+        <div class="container-table w-100 overflow-y-auto px-3">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        <th>Capacidad</th>
+                        <th>Restricción</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of eventos; track $index) {
+                    <tr>
+                        <td>{{item.tipo?.nombre}}</td>
+                        <td>{{item.precio}}</td>
+                        <td>{{item.fecha}}</td>
+                        <td>{{item.capacidad}}</td>
+                        <td>{{item.restriccionEdad ? 'Mayores' : 'Menores'}}</td>
+                        <td>{{item.descripcion}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
